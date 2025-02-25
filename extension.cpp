@@ -258,7 +258,7 @@ void SolidMoved(edict_t *pSolidEnt, ICollideable *pSolidCollide, const Vector *p
 	RETURN_META(MRES_IGNORED);
 }
 
-inline bool IsStaticProp_InLine( IHandleEntity *pHandleEntity ) const
+inline bool IsStaticProp_InLine(IHandleEntity *pHandleEntity)
 {
 	return (!pHandleEntity) || ( (pHandleEntity->GetRefEHandle().GetSerialNumber() == (0x80000000 >> NUM_ENT_ENTRY_BITS) ) != 0 );
 }
