@@ -258,10 +258,21 @@ void SolidMoved(edict_t *pSolidEnt, ICollideable *pSolidCollide, const Vector *p
 	RETURN_META(MRES_IGNORED);
 }
 
+inline bool IsStaticProp_InLine( IHandleEntity *pHandleEntity ) const
+{
+	return (!pHandleEntity) || ( (pHandleEntity->GetRefEHandle().GetSerialNumber() == (0x80000000 >> NUM_ENT_ENTRY_BITS) ) != 0 );
+}
+
 // IterationRetval_t CTouchLinks::EnumElement( IHandleEntity *pHandleEntity ) = 0;
 SH_DECL_HOOK1(CTouchLinks, EnumElement, SH_NOATTRIB, 0, IterationRetval_t, IHandleEntity *);
 IterationRetval_t TouchLinks_EnumElement(IHandleEntity *pHandleEntity)
 {
+	// skip null handle entity or static props.
+	if (!pHandleEntity || IsStaticProp_InLine(pHandleEntity))
+	{
+		RETURN_META_VALUE(MRES_SUPERCEDE, ITERATION_CONTINUE);
+	}
+
 	IServerUnknown *pUnk = static_cast< IServerUnknown* >( pHandleEntity );
 	CBaseHandle hndl = pUnk->GetRefEHandle();
 	int index = hndl.GetEntryIndex();
