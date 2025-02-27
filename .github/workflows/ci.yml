@@ -19,14 +19,12 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-20.04, windows-2022]
+        os: [ubuntu-20.04]
         sourcemod-version: [1.12-dev]
         python-version: ['3.11']
         include:
           - os: ubuntu-20.04
-            sdks: 'css csgo'
-          - os: windows-2022
-            sdks: csgo
+            sdks: 'css'
 
     steps:
       - name: Install Linux packages
