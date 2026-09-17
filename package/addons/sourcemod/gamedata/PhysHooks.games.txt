@@ -8,30 +8,35 @@
 			{
 				"library"	"server"
 				"linux"		"@_Z25Physics_RunThinkFunctionsb"
+				"linux64"	"@_Z25Physics_RunThinkFunctionsb"
 			}
 
 			"SimThink_ListCopy"
 			{
 				"library"	"server"
 				"linux"		"@_Z17SimThink_ListCopyPP11CBaseEntityi"
+				"linux64"	"@_Z17SimThink_ListCopyPP11CBaseEntityi"
 			}
 
 			"Physics_SimulateEntity"
 			{
 				"library"	"server"
 				"linux"		"@_Z22Physics_SimulateEntityP11CBaseEntity"
+				"linux64"	"@_Z22Physics_SimulateEntityP11CBaseEntity"
 			}
 
 			"CTriggerMoved"
 			{
 				"library"	"engine"
 				"linux"		"@_ZTV13CTriggerMoved"
+				"linux64"	"@_ZTV13CTriggerMoved"
 			}
 
 			"CTouchLinks"
 			{
 				"library"	"engine"
 				"linux"		"@_ZTV11CTouchLinks"
+				"linux64"	"@_ZTV11CTouchLinks"
 			}
 		}
 	}

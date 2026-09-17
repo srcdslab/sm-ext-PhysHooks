@@ -399,8 +399,12 @@ bool PhysHooks::SDK_OnLoad(char *error, size_t maxlength, bool late)
 	}
 
 	// First function in VTable
-	g_CTriggerMoved = (CTriggerMoved *)(pCTriggerMoved + 8);
-	g_CTouchLinks = (CTouchLinks *)(pCTouchLinks + 8);
+	int offset = 8;
+#if defined KE_ARCH_X64
+	offset = 16;
+#endif
+	g_CTriggerMoved = (CTriggerMoved *)(pCTriggerMoved + offset);
+	g_CTouchLinks = (CTouchLinks *)(pCTouchLinks + offset);
 
 	g_SH_TriggerMoved = SH_ADD_DVPHOOK(CTriggerMoved, EnumElement, g_CTriggerMoved, SH_STATIC(TriggerMoved_EnumElement), false);
 	g_SH_TouchLinks = SH_ADD_DVPHOOK(CTouchLinks, EnumElement, g_CTouchLinks, SH_STATIC(TouchLinks_EnumElement), false);
