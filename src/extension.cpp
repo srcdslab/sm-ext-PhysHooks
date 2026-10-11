@@ -296,7 +296,7 @@ IterationRetval_t TouchLinks_EnumElement(IHandleEntity *pHandleEntity)
 	}
 
 	// Block player from touching any filtered entity here if bit is set
-	if(g_pFilterClientSolidTouch && index < 2048 && CheckBit(g_pFilterClientSolidTouch, g_SolidEntityMoved * 2048 + index))
+	if(g_pFilterClientSolidTouch && g_SolidEntityMoved <= g_iMaxPlayers && index < 2048 && CheckBit(g_pFilterClientSolidTouch, g_SolidEntityMoved * 2048 + index))
 	{
 		RETURN_META_VALUE(MRES_SUPERCEDE, ITERATION_CONTINUE);
 	}
